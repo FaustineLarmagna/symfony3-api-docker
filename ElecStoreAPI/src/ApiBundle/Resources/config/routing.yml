@@ -1,0 +1,11 @@
+products:
+  type: rest
+  resource: ApiBundle\Controller\ProductController
+  name_prefix:  api_
+  requirements:
+      id: '\d+'
+
+categories:
+  type: rest
+  resource: ApiBundle\Controller\CategoryController
+  name_prefix:  api_

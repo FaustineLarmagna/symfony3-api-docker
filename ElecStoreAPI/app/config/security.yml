@@ -1,0 +1,23 @@
+security:
+    providers:
+        api_key_user_provider:
+            entity:
+                class: ApiBundle:User
+                property: apiKey
+
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        main:
+            anonymous: ~
+            stateless: true
+            provider: api_key_user_provider
+            guard:
+                authenticators:
+                    - ApiBundle\Security\TokenAuthenticator
+
+    access_control:
+        - { path: ^/, roles: ROLE_API, methods: [POST, PUT, DELETE] }
+
